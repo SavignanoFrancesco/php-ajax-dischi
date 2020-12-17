@@ -47,6 +47,7 @@ header .genre-select select {
 
 main {
   background: rgba(0, 0, 0, 0.9);
+  min-height: 100vh;
 }
 
 main .container .cards-container {

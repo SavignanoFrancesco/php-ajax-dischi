@@ -1,5 +1,6 @@
 main{
     background: rgba($background_color, 0.9);
+    min-height: 100vh;
     .container{
         .cards-container{
             @include flex(row, flex-start, center);
