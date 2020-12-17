@@ -1,8 +1,14 @@
 header{
     background: $background_color;
-    @include flex(row, flex-start,center);
+    @include flex(row, space-between,center);
     img{
         width: 40px;
         padding: 8px;
+    }
+    .genre-select{
+        // @include flex(row, flex-start, center);
+        select{
+            margin: 8px;
+        }
     }
 }

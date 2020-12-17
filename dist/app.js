@@ -118,6 +118,7 @@ $(document).ready(function () {
       console.log('error');
     }
   });
+  $("#select").change(function () {});
 });
 
 /***/ }),
