@@ -130,21 +130,22 @@ $(document).ready(function () {
     $.ajax({
       url: '../database/dischi_json.php',
       method: 'GET',
+      data: {
+        'test': selected_genre
+      },
       success: function success(data) {
-        console.log(data);
+        console.log('dischi filtrati: ', data);
 
         for (var i = 0; i < data.length; i++) {
-          if (data[i].genre == selected_genre || selected_genre == 'All') {
-            var context = {
-              poster: data[i].poster,
-              title: data[i].title,
-              author: data[i].author,
-              genre: data[i].genre,
-              year: data[i].year
-            };
-            var card = template(context);
-            $('.cards-container').append(card);
-          }
+          var context = {
+            poster: data[i].poster,
+            title: data[i].title,
+            author: data[i].author,
+            genre: data[i].genre,
+            year: data[i].year
+          };
+          var card = template(context);
+          $('.cards-container').append(card);
         }
       },
       error: function error() {

@@ -73,8 +73,26 @@ $dischi = [
     ]
 ];
 
+//se è stata passato un valore da jquery(ajax)
+if(isset($_GET['test'])) {
+    $genre = $_GET['test'];
+}else{
+//altrimenti vale All per mostrare tutte le carte
+    $genre = 'All';
+}
+
+//array filtrato per genere
+$dischi_filtrati = [];
+
+//filtro l'array originale e pusho gli array(sottostanti) con il genere desiderato nel nuovo array
+foreach ($dischi as $disco) {
+    if (($disco['genre'] == $genre) || $genre == 'All') {
+        array_push($dischi_filtrati, $disco);
+    }
+}
+
 header('Content-Type: application/json');
 
-echo json_encode($dischi);
+echo json_encode($dischi_filtrati);
 
 ?>

@@ -50,26 +50,26 @@ $(document).ready(function(){
 
             url: '../database/dischi_json.php',
             method: 'GET',
+            data: {
+                'test': selected_genre
+            },
             success:function(data){
-                console.log(data);
+                console.log('dischi filtrati: ',data);
 
                 for (var i = 0; i < data.length; i++) {
 
+                    var context = {
+                        poster: data[i].poster,
+                        title: data[i].title,
+                        author: data[i].author,
+                        genre: data[i].genre,
+                        year: data[i].year
+                    };
 
-                    if (data[i].genre == selected_genre || selected_genre == 'All') {
-                        var context = {
-                            poster: data[i].poster,
-                            title: data[i].title,
-                            author: data[i].author,
-                            genre: data[i].genre,
-                            year: data[i].year
-                        };
+                    var card = template(context);
 
-                        var card = template(context);
+                    $('.cards-container').append(card);
 
-                        $('.cards-container').append(card);
-
-                    }
 
                 }
 
