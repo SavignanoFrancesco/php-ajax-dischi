@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>php - ajax - dischi</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+        <link rel="stylesheet" href="../dist/app.css">
+    </head>
+    <body>
+        <header>
+            <img src="https://www.freepnglogos.com/uploads/spotify-logo-png/spotify-logo-vector-download-11.png" alt="">
+        </header>
+        <main>
+            <div class="container">
+                <div class="cards-container">
+
+                </div>
+            </div>
+        </main>
+
+        <script src="../dist/app.js" charset="utf-8"></script>
+        <script id="card-hb-template" type="text/x-handlebars-template">
+            <<div class="card">
+                <img src="{{ poster }}" alt="">
+                <div class="bottom-card">
+                    <h3>{{ title }}</h3>
+                    <em>{{ author }}</em>
+                    <p>{{ genre }}</p>
+                    <p>{{ year }}</p>
+                </div>
+            </div>
+        </script>
+    </body>
+</html>
