@@ -10,6 +10,7 @@ $(document).ready(function(){
         success:function(data){
             console.log(data);
 
+            //scorro la strttura dati
             for (var i = 0; i < data.length; i++) {
 
                 var context = {
@@ -20,6 +21,7 @@ $(document).ready(function(){
                     year: data[i].year
                 };
 
+                //creo e aapendo la carta
                 var card = template(context);
 
                 $('.cards-container').append(card);
@@ -33,13 +35,17 @@ $(document).ready(function(){
 
     });
 
+    //ONCHANGE FILTER
     $( "#select" ).change(function() {
 
+        //PRENDO IL TEXT DALLA SELECT
         var selected_genre = $( "#select option:selected" ).text();
         // alert(selected_genre);
 
+        //SVUOTO IL CONTENITORE DELLE CARTE
         $('.cards-container').empty();
 
+        //CHIAMATA AJAX
         $.ajax({
 
             url: '../database/dischi_json.php',
@@ -58,7 +64,6 @@ $(document).ready(function(){
                             genre: data[i].genre,
                             year: data[i].year
                         };
-
 
                         var card = template(context);
 
