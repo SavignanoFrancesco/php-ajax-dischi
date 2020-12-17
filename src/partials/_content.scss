@@ -1,1 +1,28 @@
+main{
+    background: rgba($background_color, 0.9);
+    .container{
+        .cards-container{
+            @include flex(row, flex-start, center);
+            flex-wrap: wrap;
+            width: 100%;
+            .card{
+                padding: 4px;
+                background: rgba($background_color,0.5);
+                width: calc((100% / 4) - (5px * 2));
+                margin: $card_margin;
+                border: 1px solid black;
+                height: 400px;
+                img{
+                    width: 100%;
 
+                }
+                .bottom-card{
+                    padding:2px;
+                    em, p{
+                        color: rgba($text_color, 0.7);
+                    }
+                }
+            }
+        }
+    }
+}

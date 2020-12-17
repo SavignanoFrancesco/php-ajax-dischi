@@ -1,1 +1,8 @@
-
+header{
+    background: $background_color;
+    @include flex(row, flex-start,center);
+    img{
+        width: 40px;
+        padding: 8px;
+    }
+}
