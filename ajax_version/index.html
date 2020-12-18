@@ -14,11 +14,10 @@
                 <span>Seleziona genere<span>
                 <select id="select" name="">
                     <option value="All">All</option>
-                    <option value="Rock">Rock</option>
+                    <!-- <option value="Rock">Rock</option>
                     <option value="Pop">Pop</option>
                     <option value="Jazz">Jazz</option>
-                    <option value="Pop">Metal</option>
-
+                    <option value="Pop">Metal</option> -->
                 </select>
             </div>
 
@@ -32,6 +31,7 @@
         </main>
 
         <script src="../dist/app.js" charset="utf-8"></script>
+        <!-- card template -->
         <script id="card-hb-template" type="text/x-handlebars-template">
             <div class="card">
                 <img src="{{ poster }}" alt="">
@@ -42,6 +42,10 @@
                     <p>{{ year }}</p>
                 </div>
             </div>
+        </script>
+        <!-- option template -->
+        <script id="option-hb-template" type="text/x-handlebars-template">
+            <option value="{{ value }}">{{ value }}</option>
         </script>
     </body>
 </html>

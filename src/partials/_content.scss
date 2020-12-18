@@ -3,6 +3,7 @@ main{
     min-height: 100vh;
     .container{
         .cards-container{
+            padding: 20px 0;
             @include flex(row, flex-start, center);
             flex-wrap: wrap;
             width: 100%;

@@ -74,8 +74,8 @@ $dischi = [
 ];
 
 //se è stata passato un valore da jquery(ajax)
-if(isset($_GET['test'])) {
-    $genre = $_GET['test'];
+if(isset($_GET['selected_genre'])) {
+    $genre = $_GET['selected_genre'];
 }else{
 //altrimenti vale All per mostrare tutte le carte
     $genre = 'All';

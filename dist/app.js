@@ -94,25 +94,47 @@
 /***/ (function(module, exports) {
 
 $(document).ready(function () {
-  var source = $("#card-hb-template").html();
-  var template = Handlebars.compile(source);
+  var card_source = $("#card-hb-template").html();
+  var card_template = Handlebars.compile(card_source);
+  var option_source = $("#option-hb-template").html();
+  var option_template = Handlebars.compile(option_source);
   $.ajax({
     url: '../database/dischi_json.php',
     method: 'GET',
     success: function success(data) {
-      console.log(data); //scorro la strttura dati
+      console.log(data); //array che conterrà i generi
+
+      var genres_array = []; //scorro la strttura dati
 
       for (var i = 0; i < data.length; i++) {
-        var context = {
+        var card_context = {
           poster: data[i].poster,
           title: data[i].title,
           author: data[i].author,
           genre: data[i].genre,
           year: data[i].year
-        }; //creo e aapendo la carta
+        }; //creo e appendo la carta
 
-        var card = template(context);
-        $('.cards-container').append(card);
+        var card = card_template(card_context);
+        $('.cards-container').append(card); //prelevo il genere del disco corrente
+
+        var current_genre = data[i].genre; //pusho i generi senza ripetizioni
+
+        if (!genres_array.includes(current_genre)) {
+          genres_array.push(current_genre);
+        }
+
+        console.log();
+      } //ciclo l'array dei generi
+
+
+      for (var i = 0; i < genres_array.length; i++) {
+        var option_context = {
+          value: genres_array[i]
+        }; //creo e appendo la carta
+
+        var option = option_template(option_context);
+        $('#select').append(option);
       }
     },
     error: function error() {
@@ -122,7 +144,7 @@ $(document).ready(function () {
 
   $("#select").change(function () {
     //PRENDO IL TEXT DALLA SELECT
-    var selected_genre = $("#select option:selected").text(); // alert(selected_genre);
+    var selected_genre = $("#select option:selected").val(); // alert(selected_genre);
     //SVUOTO IL CONTENITORE DELLE CARTE
 
     $('.cards-container').empty(); //CHIAMATA AJAX
@@ -131,7 +153,7 @@ $(document).ready(function () {
       url: '../database/dischi_json.php',
       method: 'GET',
       data: {
-        'test': selected_genre
+        'selected_genre': selected_genre
       },
       success: function success(data) {
         console.log('dischi filtrati: ', data);
@@ -144,7 +166,7 @@ $(document).ready(function () {
             genre: data[i].genre,
             year: data[i].year
           };
-          var card = template(context);
+          var card = card_template(context);
           $('.cards-container').append(card);
         }
       },
